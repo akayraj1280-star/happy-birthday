@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday, Payal 🌹</title>
+  <style>
+    /* Global */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      color: #333;
+      background: #f8f5f2;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url(./bdaybg.png) center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fdfdfd;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top:0; bottom:0; left:0; right:0;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 0 20px;
+      animation: heroFade 2s ease-in-out forwards;
+    }
+    h1 {
+      font-size: 3.5em;
+      margin-bottom: 0.3em;
+      letter-spacing: 1px;
+    }
+    p.subtitle {
+      font-size: 1.3em;
+      margin-bottom: 1em;
+    }
+    .cake-icon {
+      font-size: 4em;
+      animation: bounce 3s infinite;
+      display: block;
+    }
+
+    @keyframes heroFade {
+      0% { opacity: 0; transform: translateY(30px);}
+      100% { opacity:1; transform: translateY(0);}
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0);}
+      50% { transform: translateY(-20px);}
+    }
+
+    /* Slideshow */
+    .slideshow {
+      position: relative;
+      max-width: 800px;
+      margin: 50px auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .slideshow img {
+      width: 100%;
+      display: none;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+    .slideshow img.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Message Box */
+    .message-box {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      animation: popIn 1s ease-in forwards;
+    }
+    .message-box p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.9);}
+      100% { opacity: 1; transform: scale(1);}
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin: 60px 0 30px;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 { font-size: 2.8em; }
+      p.subtitle { font-size: 1.1em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music  -->
+  <audio id="bgMusic" loop>
+  <source src="audio.mp3" type="audio/mp3">
+</audio>
+
+
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="cake-icon">🎂</div>
+      <h1>Happy Birthday, Payal!</h1>
+      <p class="subtitle">May your day be as beautiful and bright as you 💖</p>
+    </div>
+  </section>
+
+  <div class="slideshow" id="slideshow">
+    <img src="bday flower.png" class="active" alt="Flowers & Birthday">
+    <img src="bday ballons.png" alt="Balloons Celebration">
+    <img src="bday cake.png" alt="Birthday Cake">
+    <img src="bday joy.png" alt="Joyful Smile">
+  </div>
+
+  <div class="message-box">
+    <p>Payal, your kind heart, your laughter, your presence—everything about you lights up the world. Today is all about celebrating the person you are.</p>
+    <p>May every dream you hold, come true this year and always. Wishing you a day filled with love, surprises, and heart-touching moments.</p>
+    <p>Stay amazing, stay blessed, and keep shining! 🥳</p>
+  </div>
+
+  <div class="footer">
+    Made with love just for you 💗
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('#slideshow img');
+    let idx = 0;
+    setInterval(() => {
+      slides[idx].classList.remove('active');
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add('active');
+    }, 3500);
+  </script>
+
+<button id="playButton" style="
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  z-index: 999;
+">
+  🎵 Play Music
+</button>
+
+<script>
+  const playButton = document.getElementById('playButton');
+  const bgMusic = document.getElementById('bgMusic');
+
+  playButton.addEventListener('click', () => {
+    bgMusic.play();
+    playButton.style.display = 'none'; // Hide button after play
+  });
+</script>
+
+</body>
+</html>
